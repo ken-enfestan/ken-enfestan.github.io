@@ -182,11 +182,17 @@
 
   .work-row{
     display:grid;
-    grid-template-columns: 2.5rem 5.5rem 1fr auto auto;
+    grid-template-columns: 2.5rem 5.5rem 1fr auto auto 1.75rem;
     align-items: center;
     gap: 1.25rem;
+    width: 100%;
     padding: 1.5rem 0;
+    border: none;
     border-bottom: 1px solid var(--line);
+    background: none;
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
     text-decoration:none;
     color: var(--ink);
     transition: color 0.15s ease;
@@ -224,6 +230,36 @@
     color: var(--ink-soft);
     white-space: nowrap;
     align-self: baseline;
+  }
+
+  .work-toggle{
+    justify-self: end;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--ink-soft);
+    transition: transform 0.2s ease;
+  }
+
+  .work-row[aria-expanded="true"] .work-toggle{
+    transform: rotate(45deg);
+    color: var(--accent);
+  }
+
+  .work-gallery{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    padding: 0 0 2rem;
+  }
+
+  .work-gallery[hidden]{ display:none; }
+
+  .work-gallery img{
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--paper-dim);
+    border: 1px solid var(--line);
   }
 
   /* Floating hover preview (desktop only) */
@@ -359,7 +395,7 @@
     section{ margin-bottom: 4rem; }
 
     .work-row{
-      grid-template-columns: 1.75rem 4rem 1fr;
+      grid-template-columns: 1.75rem 4rem 1fr 1.5rem;
       row-gap: 0.35rem;
     }
 
@@ -370,6 +406,15 @@
 
     .work-medium, .work-year{
       grid-column: 3;
+    }
+
+    .work-toggle{
+      grid-row: 1;
+      grid-column: 4;
+    }
+
+    .work-gallery{
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .about{ grid-template-columns: 1fr; }
@@ -421,7 +466,7 @@
 
     <section class="hero">
       <h1>Graphic design and social content for brands that want to be seen, not just posted.</h1>
-      <p>I'm Ken Enfestan, a graphic designer based in Manila, Philippines, working across social media graphics, motion design, community management, and meme content for brands including ACT &amp; Radioshack Antigua, Calitive, Glutamax, and We The Pvblic. Selected work below.</p>
+      <p>I'm Ken Enfestan, a graphic designer based in Manila, Philippines, working across social media graphics, motion design, community management, and meme content for brands including ACT &amp; Radioshack Antigua, Calitive, HealthWellnessLifestyle Inc., and We The Pvblic. Selected work below.</p>
     </section>
 
     <section id="work">
@@ -432,40 +477,68 @@
 
       <ul class="work-list" id="workList">
         <li>
-          <a class="work-row" href="#" data-preview="images/act-radioshack.jpg">
+          <button class="work-row" type="button" aria-expanded="false" aria-controls="gallery-act" data-preview="images/act-radioshack-1.jpg">
             <span class="work-num">01</span>
-            <img class="work-thumb" src="images/act-radioshack.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
+            <img class="work-thumb" src="images/act-radioshack-1.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
             <span class="work-title">ACT &amp; Radioshack Antigua</span>
             <span class="work-medium">Social media graphics &amp; reels</span>
             <span class="work-year">2026 — Present</span>
-          </a>
+            <span class="work-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="work-gallery" id="gallery-act" hidden>
+            <img src="images/act-radioshack-1.jpg" alt="ACT &amp; Radioshack Antigua — image 1" loading="lazy">
+            <img src="images/act-radioshack-2.jpg" alt="ACT &amp; Radioshack Antigua — image 2" loading="lazy">
+            <img src="images/act-radioshack-3.jpg" alt="ACT &amp; Radioshack Antigua — image 3" loading="lazy">
+            <img src="images/act-radioshack-4.jpg" alt="ACT &amp; Radioshack Antigua — image 4" loading="lazy">
+          </div>
         </li>
         <li>
-          <a class="work-row" href="#" data-preview="images/calitive.jpg">
+          <button class="work-row" type="button" aria-expanded="false" aria-controls="gallery-calitive" data-preview="images/calitive-1.jpg">
             <span class="work-num">02</span>
-            <img class="work-thumb" src="images/calitive.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
+            <img class="work-thumb" src="images/calitive-1.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
             <span class="work-title">Calitive</span>
             <span class="work-medium">Community management</span>
-            <span class="work-year">2023 – 2026</span>
-          </a>
+            <span class="work-year">July 2023 – Jan. 2026</span>
+            <span class="work-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="work-gallery" id="gallery-calitive" hidden>
+            <img src="images/calitive-1.jpg" alt="Calitive — image 1" loading="lazy">
+            <img src="images/calitive-2.jpg" alt="Calitive — image 2" loading="lazy">
+            <img src="images/calitive-3.jpg" alt="Calitive — image 3" loading="lazy">
+            <img src="images/calitive-4.jpg" alt="Calitive — image 4" loading="lazy">
+          </div>
         </li>
         <li>
-          <a class="work-row" href="#" data-preview="images/glutamax.jpg">
+          <button class="work-row" type="button" aria-expanded="false" aria-controls="gallery-hwl" data-preview="images/health-wellness-lifestyle-1.jpg">
             <span class="work-num">03</span>
-            <img class="work-thumb" src="images/glutamax.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
-            <span class="work-title">Glutamax</span>
+            <img class="work-thumb" src="images/health-wellness-lifestyle-1.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
+            <span class="work-title">HealthWellnessLifestyle Inc.</span>
             <span class="work-medium">Social media graphics &amp; motion design</span>
             <span class="work-year">Apr – May 2022</span>
-          </a>
+            <span class="work-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="work-gallery" id="gallery-hwl" hidden>
+            <img src="images/health-wellness-lifestyle-1.jpg" alt="HealthWellnessLifestyle Inc. — image 1" loading="lazy">
+            <img src="images/health-wellness-lifestyle-2.jpg" alt="HealthWellnessLifestyle Inc. — image 2" loading="lazy">
+            <img src="images/health-wellness-lifestyle-3.jpg" alt="HealthWellnessLifestyle Inc. — image 3" loading="lazy">
+            <img src="images/health-wellness-lifestyle-4.jpg" alt="HealthWellnessLifestyle Inc. — image 4" loading="lazy">
+          </div>
         </li>
         <li>
-          <a class="work-row" href="#" data-preview="images/we-the-pvblic.jpg">
+          <button class="work-row" type="button" aria-expanded="false" aria-controls="gallery-wtp" data-preview="images/we-the-pvblic-1.jpg">
             <span class="work-num">04</span>
-            <img class="work-thumb" src="images/we-the-pvblic.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
+            <img class="work-thumb" src="images/we-the-pvblic-1.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
             <span class="work-title">We The Pvblic</span>
             <span class="work-medium">Social media graphics &amp; meme content (internship)</span>
             <span class="work-year">Jan – Mar 2022</span>
-          </a>
+            <span class="work-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="work-gallery" id="gallery-wtp" hidden>
+            <img src="images/we-the-pvblic-1.jpg" alt="We The Pvblic — image 1" loading="lazy">
+            <img src="images/we-the-pvblic-2.jpg" alt="We The Pvblic — image 2" loading="lazy">
+            <img src="images/we-the-pvblic-3.jpg" alt="We The Pvblic — image 3" loading="lazy">
+            <img src="images/we-the-pvblic-4.jpg" alt="We The Pvblic — image 4" loading="lazy">
+          </div>
         </li>
       </ul>
     </section>
@@ -474,7 +547,7 @@
       <div>
         <h2>About</h2>
         <p>I'm a graphic designer based in Manila, Philippines, focused on making brands feel native to social media — scroll-stopping graphics, short-form motion, and content that sounds like it belongs in the feed rather than an ad break.</p>
-        <p>I've worked with brands including ACT &amp; Radioshack Antigua, Calitive, Glutamax, and We The Pvblic, handling everything from day-to-day content and community replies to full campaign rollouts. Available for freelance and full-time roles.</p>
+        <p>I've worked with brands including ACT &amp; Radioshack Antigua, Calitive, HealthWellnessLifestyle Inc., and We The Pvblic, handling everything from day-to-day content and community replies to full campaign rollouts. Available for freelance and full-time roles.</p>
       </div>
       <div>
         <ul class="capabilities">
@@ -538,6 +611,28 @@
       });
     });
   }
+
+  // Expand/collapse project galleries (accordion: one open at a time)
+  rows.forEach(function(row){
+    row.addEventListener('click', function(){
+      var gallery = document.getElementById(row.getAttribute('aria-controls'));
+      var isOpen = row.getAttribute('aria-expanded') === 'true';
+
+      rows.forEach(function(otherRow){
+        if(otherRow !== row){
+          otherRow.setAttribute('aria-expanded', 'false');
+          document.getElementById(otherRow.getAttribute('aria-controls')).hidden = true;
+        }
+      });
+
+      row.setAttribute('aria-expanded', String(!isOpen));
+      gallery.hidden = isOpen;
+
+      if(!isOpen){
+        row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
 </script>
 
 </body>
