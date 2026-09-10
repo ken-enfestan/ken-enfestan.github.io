@@ -182,8 +182,8 @@
 
   .work-row{
     display:grid;
-    grid-template-columns: 2.5rem 1fr auto auto;
-    align-items: baseline;
+    grid-template-columns: 2.5rem 5.5rem 1fr auto auto;
+    align-items: center;
     gap: 1.25rem;
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--line);
@@ -201,18 +201,29 @@
     font-variant-numeric: tabular-nums;
     color: var(--ink-soft);
     font-size: 0.9rem;
+    align-self: baseline;
+  }
+
+  .work-thumb{
+    width: 5.5rem;
+    height: 3.9rem;
+    object-fit: cover;
+    background: var(--paper-dim);
+    border: 1px solid var(--line);
   }
 
   .work-title{
     font-family: var(--serif);
     font-size: clamp(1.3rem, 2.4vw, 1.9rem);
     font-weight: 500;
+    align-self: baseline;
   }
 
   .work-medium, .work-year{
     font-size: 0.9rem;
     color: var(--ink-soft);
     white-space: nowrap;
+    align-self: baseline;
   }
 
   /* Floating hover preview (desktop only) */
@@ -348,12 +359,17 @@
     section{ margin-bottom: 4rem; }
 
     .work-row{
-      grid-template-columns: 1.75rem 1fr;
+      grid-template-columns: 1.75rem 4rem 1fr;
       row-gap: 0.35rem;
     }
 
+    .work-thumb{
+      width: 4rem;
+      height: 3rem;
+    }
+
     .work-medium, .work-year{
-      grid-column: 2;
+      grid-column: 3;
     }
 
     .about{ grid-template-columns: 1fr; }
@@ -393,7 +409,7 @@
     </div>
 
     <div class="sidebar-foot">
-      <a href="mailto:hello@yourname.com">hello@yourname.com</a>
+      <a href="mailto:kenneth.enfestan@gmail.com">kenneth.enfestan@gmail.com</a>
       <a href="#">Instagram</a>
       <a href="#">LinkedIn</a>
       <a href="#">Are.na</a>
@@ -418,33 +434,37 @@
         <li>
           <a class="work-row" href="#" data-preview="images/act-radioshack.jpg">
             <span class="work-num">01</span>
+            <img class="work-thumb" src="images/act-radioshack.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
             <span class="work-title">ACT &amp; Radioshack Antigua</span>
             <span class="work-medium">Social media graphics &amp; reels</span>
-            <span class="work-year">202X</span>
+            <span class="work-year">2026 — Present</span>
           </a>
         </li>
         <li>
           <a class="work-row" href="#" data-preview="images/calitive.jpg">
             <span class="work-num">02</span>
+            <img class="work-thumb" src="images/calitive.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
             <span class="work-title">Calitive</span>
-            <span class="work-medium">Community management &amp; content strategy</span>
-            <span class="work-year">202X</span>
+            <span class="work-medium">Community management</span>
+            <span class="work-year">2023 – 2026</span>
           </a>
         </li>
         <li>
           <a class="work-row" href="#" data-preview="images/glutamax.jpg">
             <span class="work-num">03</span>
+            <img class="work-thumb" src="images/glutamax.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
             <span class="work-title">Glutamax</span>
             <span class="work-medium">Social media graphics &amp; motion design</span>
-            <span class="work-year">202X</span>
+            <span class="work-year">Apr – May 2022</span>
           </a>
         </li>
         <li>
           <a class="work-row" href="#" data-preview="images/we-the-pvblic.jpg">
             <span class="work-num">04</span>
+            <img class="work-thumb" src="images/we-the-pvblic.jpg" alt="" loading="lazy" onerror="this.style.opacity=0">
             <span class="work-title">We The Pvblic</span>
-            <span class="work-medium">Social media graphics &amp; meme content</span>
-            <span class="work-year">202X</span>
+            <span class="work-medium">Social media graphics &amp; meme content (internship)</span>
+            <span class="work-year">Jan – Mar 2022</span>
           </a>
         </li>
       </ul>
@@ -462,7 +482,6 @@
           <li>Motion graphics</li>
           <li>Community management</li>
           <li>Meme &amp; culture content</li>
-          <li>Content strategy</li>
           <li>Reels &amp; short-form video</li>
         </ul>
       </div>
@@ -470,7 +489,7 @@
 
     <section id="contact" class="contact">
       <h2>Let's make something worth looking at.</h2>
-      <a class="contact-link" href="mailto:hello@yourname.com">hello@yourname.com</a>
+      <a class="contact-link" href="mailto:kenneth.enfestan@gmail.com">kenneth.enfestan@gmail.com</a>
     </section>
 
     <footer class="sitefoot">
