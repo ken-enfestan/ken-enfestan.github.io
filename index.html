@@ -262,24 +262,101 @@
     border: 1px solid var(--line);
   }
 
-  /* Floating hover preview (desktop only) */
-  .preview{
-    position: fixed;
-    top:0; left:0;
-    width: 300px;
-    height: 220px;
-    pointer-events: none;
-    opacity: 0;
-    transform: translate(-9999px,-9999px);
-    transition: opacity 0.18s ease;
-    z-index: 40;
-    border: 1px solid var(--line);
-    background-size: cover;
-    background-position: center;
-    background-color: var(--paper-dim);
+  /* Personal & small projects */
+  .personal-note{
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 0 0 2rem;
   }
 
-  .preview.visible{ opacity: 1; }
+  .personal-grid{
+    list-style:none;
+    margin:0; padding:0;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .personal-item{
+    border: none;
+    background: none;
+    padding:0;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: var(--ink);
+  }
+
+  .personal-item img{
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--paper-dim);
+    border: 1px solid var(--line);
+    transition: opacity 0.15s ease;
+  }
+
+  .personal-item:hover img,
+  .personal-item:focus-visible img{
+    opacity: 0.85;
+  }
+
+  .personal-caption{
+    display:block;
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 22, 14, 0.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 2rem;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .lightbox.visible{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox img{
+    max-width: min(90vw, 900px);
+    max-height: 85vh;
+    object-fit: contain;
+    border: 1px solid rgba(236, 231, 221, 0.2);
+  }
+
+  .lightbox-caption{
+    position:absolute;
+    bottom: 2rem;
+    left:0; right:0;
+    text-align:center;
+    color: var(--paper);
+    font-size: 0.9rem;
+  }
+
+  .lightbox-close{
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background:none;
+    border: 1px solid var(--paper);
+    color: var(--paper);
+    border-radius: 999px;
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.1rem;
+    cursor:pointer;
+  }
 
   /* About */
   .about{
@@ -417,11 +494,12 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
+    .personal-grid{ grid-template-columns: repeat(2, 1fr); }
+
     .about{ grid-template-columns: 1fr; }
 
     .capabilities{ grid-template-columns: 1fr 1fr; }
 
-    .preview{ display:none; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -447,6 +525,7 @@
       <nav class="primary-nav" id="primaryNav">
         <ul>
           <li><a href="#work">Work</a></li>
+          <li><a href="#personal">Personal</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -543,6 +622,53 @@
       </ul>
     </section>
 
+    <section id="personal">
+      <div class="section-head">
+        <h2>Personal &amp; small projects</h2>
+        <span class="count">01 — 06</span>
+      </div>
+      <p class="personal-note">One-off pieces, favors for friends, and self-directed work made outside of client projects. Click any image to view it larger.</p>
+
+      <ul class="personal-grid" id="personalGrid">
+        <li>
+          <button class="personal-item" type="button" data-full="images/personal-1.jpg" data-caption="Replace with a short caption">
+            <img src="images/personal-1.jpg" alt="Personal project 1" loading="lazy" onerror="this.style.opacity=0">
+            <span class="personal-caption">Replace with a short caption</span>
+          </button>
+        </li>
+        <li>
+          <button class="personal-item" type="button" data-full="images/personal-2.jpg" data-caption="Replace with a short caption">
+            <img src="images/personal-2.jpg" alt="Personal project 2" loading="lazy" onerror="this.style.opacity=0">
+            <span class="personal-caption">Replace with a short caption</span>
+          </button>
+        </li>
+        <li>
+          <button class="personal-item" type="button" data-full="images/personal-3.jpg" data-caption="Replace with a short caption">
+            <img src="images/personal-3.jpg" alt="Personal project 3" loading="lazy" onerror="this.style.opacity=0">
+            <span class="personal-caption">Replace with a short caption</span>
+          </button>
+        </li>
+        <li>
+          <button class="personal-item" type="button" data-full="images/personal-4.jpg" data-caption="Replace with a short caption">
+            <img src="images/personal-4.jpg" alt="Personal project 4" loading="lazy" onerror="this.style.opacity=0">
+            <span class="personal-caption">Replace with a short caption</span>
+          </button>
+        </li>
+        <li>
+          <button class="personal-item" type="button" data-full="images/personal-5.jpg" data-caption="Replace with a short caption">
+            <img src="images/personal-5.jpg" alt="Personal project 5" loading="lazy" onerror="this.style.opacity=0">
+            <span class="personal-caption">Replace with a short caption</span>
+          </button>
+        </li>
+        <li>
+          <button class="personal-item" type="button" data-full="images/personal-6.jpg" data-caption="Replace with a short caption">
+            <img src="images/personal-6.jpg" alt="Personal project 6" loading="lazy" onerror="this.style.opacity=0">
+            <span class="personal-caption">Replace with a short caption</span>
+          </button>
+        </li>
+      </ul>
+    </section>
+
     <section id="about" class="about">
       <div>
         <h2>About</h2>
@@ -573,7 +699,11 @@
   </main>
 </div>
 
-<div class="preview" id="preview" aria-hidden="true"></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+  <img id="lightboxImg" src="" alt="">
+  <span class="lightbox-caption" id="lightboxCaption"></span>
+</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -592,46 +722,71 @@
     });
   });
 
-  // Floating image preview on hover (desktop only, skips touch)
-  var preview = document.getElementById('preview');
+  // Expand/collapse project galleries: hover previews, click pins one open,
+  // and the first project starts open so visitors know there's more to see.
   var rows = document.querySelectorAll('.work-row');
   var isTouch = window.matchMedia('(hover: none)').matches;
+  var pinnedRow = rows.length ? rows[0] : null;
 
-  if(!isTouch){
+  function showRow(activeRow){
     rows.forEach(function(row){
-      row.addEventListener('mouseenter', function(){
-        preview.style.backgroundImage = 'url(' + row.dataset.preview + ')';
-        preview.classList.add('visible');
-      });
-      row.addEventListener('mouseleave', function(){
-        preview.classList.remove('visible');
-      });
-      row.addEventListener('mousemove', function(e){
-        preview.style.transform = 'translate(' + (e.clientX + 24) + 'px,' + (e.clientY - 110) + 'px)';
-      });
+      var gallery = document.getElementById(row.getAttribute('aria-controls'));
+      var isActive = row === activeRow;
+      row.setAttribute('aria-expanded', String(isActive));
+      gallery.hidden = !isActive;
     });
   }
 
-  // Expand/collapse project galleries (accordion: one open at a time)
+  showRow(pinnedRow);
+
   rows.forEach(function(row){
     row.addEventListener('click', function(){
-      var gallery = document.getElementById(row.getAttribute('aria-controls'));
-      var isOpen = row.getAttribute('aria-expanded') === 'true';
-
-      rows.forEach(function(otherRow){
-        if(otherRow !== row){
-          otherRow.setAttribute('aria-expanded', 'false');
-          document.getElementById(otherRow.getAttribute('aria-controls')).hidden = true;
-        }
-      });
-
-      row.setAttribute('aria-expanded', String(!isOpen));
-      gallery.hidden = isOpen;
-
-      if(!isOpen){
-        row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      pinnedRow = (pinnedRow === row) ? null : row;
+      showRow(pinnedRow);
     });
+
+    if(!isTouch){
+      row.addEventListener('mouseenter', function(){
+        showRow(row);
+      });
+      row.addEventListener('mouseleave', function(){
+        showRow(pinnedRow);
+      });
+    }
+  });
+
+  // Lightbox for personal & small projects
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lightboxClose = document.getElementById('lightboxClose');
+  var personalItems = document.querySelectorAll('.personal-item');
+
+  function openLightbox(src, caption){
+    lightboxImg.src = src;
+    lightboxImg.alt = caption;
+    lightboxCaption.textContent = caption;
+    lightbox.classList.add('visible');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('visible');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+
+  personalItems.forEach(function(item){
+    item.addEventListener('click', function(){
+      openLightbox(item.dataset.full, item.dataset.caption);
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox){ closeLightbox(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeLightbox(); }
   });
 </script>
 
